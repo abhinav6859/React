@@ -1,0 +1,8 @@
+.heading {
+  color: blue;
+}
+button {
+  border: 10px solid black;
+  border-radius: 50%;
+  border-color: rgb(84, 27, 177);
+}
