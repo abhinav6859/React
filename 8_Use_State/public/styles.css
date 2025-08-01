@@ -4,6 +4,21 @@
   padding: 0;
   font-weight: 300;
 }
+.box {
+  border: 2px solid blue;
+  padding: 20px;
+}
+.note {
+  background: #a1af0d;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #f2eaea;
+  padding: 20px;
+  width: 440px;
+  margin: 20px;
+  float: left;
+  text-align: center;
+}
+
 .theme-button {
   all: unset;
   cursor: pointer;
@@ -33,10 +48,8 @@ body {
 
 .container {
   margin: 10% auto;
-  padding: 80px 0;
-  text-align: center;
+  padding: 80px;
 }
-
 .container h1 {
   font-size: 40px;
   font-weight: 200;
