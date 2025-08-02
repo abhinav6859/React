@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Card from "./card";
+import Color from "./color";
 
 function App() {
   const [headingText, setHeadingText] = useState("Hello");
   const [buttonColor, setButtonColor] = useState("white");
   const [showCard, setShowCard] = useState(false);
-  const [light, dark] = useState("light");
   function changeHeading() {
     setHeadingText("New Heading Text!");
 
@@ -22,30 +22,31 @@ function App() {
     setButtonColor("white");
     setShowCard(false);
   }
-  function changeTheme() {
-    dark("dark");
-  }
 
-  const [name, setName] = useState("");
   const [headingtext, setHeading] = useState("");
+  const [contact, setContact] = useState({
+    fName: "",
+    lName: "",
+    email: "",
+  });
 
   function handleChange(event) {
-    console.log(event.target.value);
-    setName(event.target.value);
+    const { name, value } = event.target;
+
+    setContact((prevValue) => ({
+      ...prevValue,
+      [name]: value,
+    }));
   }
 
-  function handleClick(event) {
-    setHeading(name);
-
-    event.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault(); // ✅ Prevent form reload
+    console.log("Submitted:", contact);
   }
-
   return (
     <div className="container">
+      <Color />
       <div className="note">
-        <button type="button" onClick={changeTheme} class="theme-button">
-          {light}
-        </button>
         <h1>{headingText}</h1>
         <input type="text" placeholder="What's your name?" />
         <button
@@ -58,15 +59,30 @@ function App() {
         </button>
         {showCard && <Card />}
       </div>
-      {/* <div className="box">This has a border</div> */}
+
       <div className="note">
-        <h1>Hello {headingtext}</h1>
-        <form onSubmit={handleClick}>
+        <h1>
+          Hello {contact.fName} {contact.lName}
+        </h1>
+        <p>{contact.email}</p>
+        <form onSubmit={handleSubmit}>
           <input
             onChange={handleChange}
-            type="text"
-            placeholder="What's your name?"
-            // value={name}
+            name="fName"
+            value={contact.fName}
+            placeholder="First Name"
+          />
+          <input
+            onChange={handleChange}
+            name="lName"
+            value={contact.lName}
+            placeholder="Last Name"
+          />
+          <input
+            onChange={handleChange}
+            name="email"
+            value={contact.email}
+            placeholder="Email"
           />
           <button type="submit">Submit</button>
         </form>
