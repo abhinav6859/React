@@ -10,12 +10,12 @@ function App() {
     setInputText(newValue);
   }
 
-  function addItem() {
+   function addItem() {
     setItems((prevItems) => {
       return [...prevItems, inputText];
     });
     setInputText("");
-  }
+   }
 
   function deleteItem(id) {
     setItems((prevItems) => {
